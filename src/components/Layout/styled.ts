@@ -4,7 +4,7 @@ import styled from "styled-components"
 
 export const Header = styled.header`
   background-color: rgb(255, 255, 255);
-  padding: 20px;
+  padding: 20px 0;
   display:flex;
   position: fixed;
   width: 100%;
@@ -24,7 +24,7 @@ export const HeaderContent = styled.div`
   display:flex;
   margin: auto;
   width: 100%;
-  flex-wrap: wrap;
+  padding: 0 20px;
 
   @media only screen and (min-width: 1366px) {
     width: 80rem;
@@ -33,21 +33,17 @@ export const HeaderContent = styled.div`
 
 export const Logo = styled.a`
   padding: 10px 0;
-  width: 30%;
-
-  @media only screen and (min-width: 1366px) {
-    width: 10%;
-}
+  width: 20%;
 `;
 
+export const Empty = styled.div`
+  width: 20%;
+`
+
 export const Nav = styled.nav`
+  flex: 1;
   display: flex;
   justify-content: space-between;
-  width: 70%;
-
-  @media only screen and (min-width: 1366px) {
-    width: 90%;
-  }
 `;
 
 export const NavList = styled.ul`
@@ -55,6 +51,7 @@ export const NavList = styled.ul`
   padding: 0;
   margin: auto;
   width: 30rem;
+  text-align: center;
 `;
 
 export const NavItem = styled.li`

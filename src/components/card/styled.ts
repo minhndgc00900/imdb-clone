@@ -5,7 +5,7 @@ export const CardItem = styled.div`
   border: 0 solid transparent;
   border-radius: 8px;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-  width: 100%;
+  min-width: 0;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -64,49 +64,11 @@ export const TitleContainer = styled.div`
 
 
 export const Title = styled.div`
-  padding: 0 11px;
-    text-align: center;
-    text-overflow: ellipsis;
-    max-width: 220px;
-    width: 100% ;
-    overflow: hidden !important;
-    white-space: nowrap;
-
-    @media only screen and (min-width: 420px) { 
-      max-width: 120px;
-    }
-
-    @media only screen and (min-width: 576px) { 
-      max-width: 200px;
-    }
-
-    @media only screen and (min-width: 650px) { 
-      max-width: 250px;
-    }
-
-    @media only screen and (min-width: 768px) { 
-      max-width: 120px;
-    }
-
-    @media only screen and (min-width: 992px){ 
-      max-width: 160px;
-    }
-
-    @media only screen and (min-width: 1024px) { 
-      max-width: 180px;
-    }
-
-    @media only screen and (min-width: 1108px) { 
-      max-width: 200px;
-    }
-
-    @media only screen and (min-width: 1200px) { 
-      max-width: 230px;
-    }
-
-    @media only screen and (min-width: 1366px) { 
-      max-width: 120px;
-    }
+  text-align: center;
+  text-overflow: ellipsis;
+  width: 100% ;
+  overflow: hidden !important;
+  white-space: nowrap;
 `
 export const Desc = styled.div`
   display: -webkit-box;

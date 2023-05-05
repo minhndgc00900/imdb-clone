@@ -10,11 +10,11 @@ import {
   Plot,
   TitleContainer,
   Year,
+  Image,
 } from "./styled";
 import { AppDispatch } from "../../store";
 import { useDispatch, useSelector } from "react-redux";
 import { retrieveMovieDetail } from "../../slices/movies";
-import { Image } from "../../components/card/styled";
 import { toHoursAndMinutes } from "../../shared/utils";
 
 const Details = (props: any) => {
@@ -27,8 +27,6 @@ const Details = (props: any) => {
   }, [dispatch]);
 
   const { movieDetail } = useSelector((state: any) => state?.movies);
-
-  console.log(34, movieDetail);
 
   useEffect(() => {
     initFetch();

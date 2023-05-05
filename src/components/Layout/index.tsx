@@ -7,6 +7,7 @@ import {
   NavItem,
   NavLink,
   NavList,
+  Empty,
 } from "./styled";
 
 const LayoutCustom = (props: any) => {
@@ -51,6 +52,7 @@ const LayoutCustom = (props: any) => {
               </NavItem>
             </NavList>
           </Nav>
+          <Empty/>
         </HeaderContent>
       </Header>
       <Content>{children}</Content>

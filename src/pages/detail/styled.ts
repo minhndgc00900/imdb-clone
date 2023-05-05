@@ -46,3 +46,11 @@ export const Year = styled.div`
 export const Plot = styled.div`
     font-weight: 600;
 `
+
+export const Image = styled.img`
+  align-items: center;
+  overflow: hidden;
+  border-radius: 8px;
+  object-fit: cover;
+  width: 100%;
+`
