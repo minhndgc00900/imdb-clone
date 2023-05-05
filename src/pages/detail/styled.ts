@@ -11,7 +11,7 @@ export const Container = styled.div`
 `;
 
 export const ImageContainer = styled.div`
-  width: 30%;
+  width: 35%;
   align-items: center;
   overflow: hidden;
   border-radius: 8px;
