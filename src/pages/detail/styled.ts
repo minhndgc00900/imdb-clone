@@ -2,17 +2,22 @@ import styled from "styled-components"
 
 export const Container = styled.div`
     display: flex;
-    gap: 20px;
+    gap: 32px;
     flex-wrap: wrap;
     margin-top: 1rem;
-    /* justify-content: center; */
+    @media only screen and (max-width: 768px) {
+      flex-direction: column;
+    }
 `;
 
 export const ImageContainer = styled.div`
-  width: 20%;
+  width: 30%;
   align-items: center;
   overflow: hidden;
   border-radius: 8px;
+  @media only screen and (max-width: 768px) {
+    width: 100%;
+  }
 `
 
 export const TitleContainer = styled.div`
@@ -21,9 +26,12 @@ export const TitleContainer = styled.div`
     justify-content: center;
     gap: 20px;
     width: 60%;
+    @media only screen and (max-width: 768px) {
+      width: 100%;
+    }
 `
 export const MainTitle = styled.div`
-    font-size: 40px;
+    font-size: 48px;
     font-weight: 600;
 `
 
@@ -44,7 +52,7 @@ export const Year = styled.div`
 `
 
 export const Plot = styled.div`
-    font-weight: 600;
+    font-weight: 500;
 `
 
 export const Image = styled.img`
