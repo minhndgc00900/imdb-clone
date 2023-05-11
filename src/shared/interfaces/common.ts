@@ -23,3 +23,7 @@ export interface Movie extends Movies {
 export interface MovieDetail {
   movie: Movie
 }
+
+export interface MovieList {
+  movies: Movies[]
+}

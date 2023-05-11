@@ -56,9 +56,7 @@ export async function makeApiRequest<T>(
   }
 
   return res
-    .then((resp) => {
-      return resp;
-    })
+    .then((resp) => resp as T)
     .catch(async (error: ErrorResponse) => {
       switch (error.response?.status) {
         case 400: // Wrong url or params

@@ -1,32 +1,19 @@
 import { makeApiRequest } from "../apis/axiosClient";
 import { ApiMethods } from "../enums/api";
-import { Movies } from "../interfaces/common";
+import { MovieDetail, MovieList } from "../interfaces/common";
 
-const getAll = async (offset: number, limit = 28) => {
-    const response = await makeApiRequest<Movies[]>(ApiMethods.get, "movies", {
+const getAll = (offset: number, limit = 28) => makeApiRequest<MovieList>(ApiMethods.get, "movies", {
+    params: {
         offset,
         limit
-    });
+    }
+});
 
-    return response
-}
+const getMovie = (movieId: string) => makeApiRequest<MovieDetail>(ApiMethods.get, `movies/${movieId}`, {})
 
-const getMovie = async (movieId: string) => {
-    const response = await makeApiRequest<Movies>(ApiMethods.get, `movies/${movieId}`, { })
-
-    return response
-}
-
-const getAllShow = async (offset: number, limit = 28) => {
-    const response = await makeApiRequest<Movies[]>(ApiMethods.get, "tv_shows", {
-        params: {
-            offset,
-            limit
-        }
-    })
-
-    return response
-}
+const getAllShow = (offset: number, limit = 28) => makeApiRequest<MovieList>(ApiMethods.get, "tv_shows", {
+    params: { offset, limit }
+})
 
 const MoviesService = {
     getAll,
