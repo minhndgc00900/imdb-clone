@@ -1,28 +1,37 @@
-import { callAPI } from "../apis/axiosClient";
+import { makeApiRequest } from "../apis/axiosClient";
 import { ApiMethods } from "../enums/api";
+import { Movies } from "../interfaces/common";
 
-const getAll = (offset: number, limit: number = 28) => {
-    return callAPI(ApiMethods.get, "https://qjth0hsvqa.execute-api.ap-southeast-1.amazonaws.com/staging/movies", { params: {
+const getAll = async (offset: number, limit: number = 28) => {
+    const response = await makeApiRequest<Movies[]>(ApiMethods.get, "movies", {
         offset,
         limit
-    } })
+    });
+
+    return response
 }
 
-const getMovie = (movieId: string) => {
-    return callAPI(ApiMethods.get, `https://qjth0hsvqa.execute-api.ap-southeast-1.amazonaws.com/staging/movies/${movieId}`, { params: {}})
+const getMovie = async (movieId: string) => {
+    const response = await makeApiRequest<Movies>(ApiMethods.get, `movies/${movieId}`, { })
+
+    return response
 }
 
-const getAllShow = (offset: number, limit: number = 28) => {
-    return callAPI(ApiMethods.get, "https://qjth0hsvqa.execute-api.ap-southeast-1.amazonaws.com/staging/tv_shows", { params: {
-        offset,
-        limit
-    } })
+const getAllShow = async (offset: number, limit: number = 28) => {
+    const response = await makeApiRequest<Movies[]>(ApiMethods.get, "tv_shows", {
+        params: {
+            offset,
+            limit
+        }
+    })
+
+    return response
 }
 
 const MoviesService = {
     getAll,
     getAllShow,
     getMovie
-  };
-  
-  export default MoviesService;
+};
+
+export default MoviesService;

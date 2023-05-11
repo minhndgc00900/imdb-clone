@@ -2,15 +2,25 @@
 
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import MoviesService from "../shared/services/MoviesService";
+import { Movies, Movie } from "../shared/interfaces/common";
 
-const initialState = {
+export type MoviesState = {
+  movies: Movies[],
+  movieDetail: Movie | null
+};
+
+interface requestData {
+  offset: number;
+}
+
+const initialState: MoviesState = {
   movies: [],
   movieDetail: null
 };
 
 export const retrieveMovies = createAsyncThunk(
   "movies/retrieve",
-  async ({ offset }: any) => {
+  async ({ offset }: requestData) => {
     const res = await MoviesService.getAll(offset);
     return res.movies;
   },
@@ -28,10 +38,10 @@ const MovieSlice = createSlice({
   name: "Movie",
   initialState,
   extraReducers: {
-    [retrieveMovies.fulfilled]: (state: any, action: any) => {
+    [retrieveMovies.fulfilled]: (state, action) => {
       state.movies.push(...action.payload);
     },
-    [retrieveMovieDetail.fulfilled]: (state: any, action: any) => {      
+    [retrieveMovieDetail.fulfilled]: (state, action) => {      
       state.movieDetail = {...action.payload};
     },
   },

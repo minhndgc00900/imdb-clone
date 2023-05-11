@@ -1,10 +1,10 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { retrieveMovies } from "../../slices/movies";
+import { MoviesState, retrieveMovies } from "../../slices/movies";
 import { useDispatch, useSelector } from "react-redux";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Card from "../../components/card";
-import { AppDispatch } from "../../store";
+import { AppDispatch, RootState } from "../../store";
 import { List, Loading } from "./styled";
 
 export interface Movie {
@@ -18,9 +18,8 @@ export interface Movie {
 function MoviesPage() {
   const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
-  const InfiniteScrollComponent = InfiniteScroll as any;
   const [page, setPage] = useState<number>(0);
-  const { movies = [] } = useSelector((state: any) => state?.movies);
+  const { movies = [] } = useSelector<RootState, MoviesState>((state) => state?.movies);
 
   const initFetch = useCallback(
     (page: number) => {
@@ -37,7 +36,7 @@ function MoviesPage() {
   return (
     <div>
       <h1>Latest Movies</h1>
-      <InfiniteScrollComponent
+      <InfiniteScroll
         dataLength={movies.length}
         next={() => initFetch(page)}
         hasMore={movies.length < 250}
@@ -50,7 +49,7 @@ function MoviesPage() {
               <Card movie={item} key={item.id} />
             ))}
         </List>
-      </InfiniteScrollComponent>
+      </InfiniteScroll>
     </div>
   );
 }

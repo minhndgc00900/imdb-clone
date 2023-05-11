@@ -2,7 +2,11 @@ import { useLocation } from "react-router";
 import { hyphenToUpper } from "../../shared/utils";
 import { Arrow, BreadCrumb } from "./styled";
 
-const Breadcrumbs = (props: any) => {
+interface BreadcrumbsProps{
+  title: string;
+}
+
+const Breadcrumbs = (props: BreadcrumbsProps) => {
   const { title = '' } = props;
   const { pathname } = useLocation();
   const pathList = pathname.split("/").filter((it: string) => it !== "");

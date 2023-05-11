@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect } from "react";
 import Breadcrumbs from "../../components/Breadcrumbs";
 import {
   Container,
@@ -12,12 +12,12 @@ import {
   Year,
   Image,
 } from "./styled";
-import { AppDispatch } from "../../store";
+import { AppDispatch, RootState } from "../../store";
 import { useDispatch, useSelector } from "react-redux";
-import { retrieveMovieDetail } from "../../slices/movies";
+import { MoviesState, retrieveMovieDetail } from "../../slices/movies";
 import { toHoursAndMinutes } from "../../shared/utils";
 
-const Details = (props: any) => {
+const Details = () => {
   const { id } = useParams();
   const dispatch = useDispatch<AppDispatch>();
   const initFetch = useCallback(() => {
@@ -26,7 +26,7 @@ const Details = (props: any) => {
     }
   }, [dispatch]);
 
-  const { movieDetail } = useSelector((state: any) => state?.movies);
+  const { movieDetail } = useSelector<RootState, MoviesState>((state) => state?.movies);
 
   useEffect(() => {
     initFetch();

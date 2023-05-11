@@ -2,48 +2,57 @@
 
 import axios, {
   AxiosError,
-  AxiosInstance,
   AxiosRequestConfig,
   AxiosResponse,
 } from 'axios';
 import { ApiMethods } from '../../shared/enums/api';
 
-const baseURL = process.env.REACT_APP_URL;
+interface ApiResponse {
+  data: any;
+  status: number;
+  message: string;
+}
 
-const axiosInstance: AxiosInstance = axios.create({
+interface ErrorResponse {
+  response: ApiResponse;
+}
+
+const API_BASE_URL = process.env.REACT_APP_URL;
+
+const axiosInstance = axios.create({
+  baseURL: API_BASE_URL,
   headers: {
     Accept: 'applications/json',
     'Content-Type': 'application/json',
   },
-  baseURL,
 });
 
 axiosInstance.interceptors.request.use(
   (config: AxiosRequestConfig) => {
-    // Do something before request is sent
     return config;
   },
   (error: AxiosError) => {
-    // Do something with request error
     return Promise.reject(error);
   },
 );
-
 axiosInstance.interceptors.response.use(
-  (response: AxiosResponse) => {
+  (response: AxiosResponse<ApiResponse>) => {
+    // Handle successful responses
     return response.data;
   },
-  (error: AxiosError) => {
-    throw error;
-  },
+  (error: AxiosError<ApiResponse>) => {
+    // Handle error responses
+    const errorMessage = error.response?.data.message || 'An error occurred';
+    throw new Error(errorMessage);
+  }
 );
 
-export const callAPI = (
+export async function makeApiRequest<T>(
   method: ApiMethods,
   path: string,
   body: object,
   config: object = {},
-) => {
+) {
   let res = null;
   switch (method) {
     case 'get':
@@ -55,10 +64,10 @@ export const callAPI = (
   }
 
   return res
-    .then((resp: any) => {
+    .then((resp: T) => {
       return resp;
     })
-    .catch(async (error: any) => {
+    .catch(async (error: ErrorResponse) => {
       switch (error.response?.status) {
         case 400: // Wrong url or params
           break;
@@ -69,4 +78,4 @@ export const callAPI = (
       }
       throw error.response.data;
     });
-};
+  };

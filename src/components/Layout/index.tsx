@@ -1,3 +1,4 @@
+import { ReactNode } from 'react';
 import {
   Content,
   Header,
@@ -10,7 +11,11 @@ import {
   Empty,
 } from "./styled";
 
-const LayoutCustom = (props: any) => {
+interface LayoutCustomProps {
+  children: ReactNode;
+}
+
+const LayoutCustom = (props: LayoutCustomProps) => {
   const { children } = props;
 
   return (

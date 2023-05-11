@@ -3,8 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Card from "../../components/card";
-import { AppDispatch } from "../../store";
-import { retrieveShows } from "../../slices/shows";
+import { AppDispatch, RootState } from "../../store";
+import { ShowsState, retrieveShows } from "../../slices/shows";
 import { List, Loading } from "./styled";
 
 export interface Show {
@@ -16,11 +16,9 @@ export interface Show {
 }
 
 function ShowPage() {
-  const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
-  const InfiniteScrollComponent = InfiniteScroll as any;
   const [page, setPage] = useState<number>(0);
-  const { shows = [] } = useSelector((state: any) => state?.shows);
+  const { shows = [] } = useSelector<RootState, ShowsState>((state) => state?.shows);
 
   const initFetch = useCallback(
     (page: number) => {
@@ -37,7 +35,7 @@ function ShowPage() {
   return (
     <div>
       <h1>Latest TV Shows</h1>
-      <InfiniteScrollComponent
+      <InfiniteScroll
         dataLength={shows.length}
         next={() => initFetch(page)}
         hasMore={shows.length < 250}
@@ -50,7 +48,7 @@ function ShowPage() {
               <Card movie={item} key={key} disableNavigate />
             ))}
         </List>
-      </InfiniteScrollComponent>
+      </InfiniteScroll>
     </div>
   );
 }
