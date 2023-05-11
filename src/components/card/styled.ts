@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled from 'styled-components';
 
 export const CardItem = styled.div`
   text-decoration: none;
@@ -27,7 +27,7 @@ export const Image = styled.img`
   border-radius: 8px 8px 0 0;
   object-fit: cover;
   width: 100%;
-`
+`;
 export const Tooltiptext = styled.span`
   visibility: hidden;
   width: 120px;
@@ -43,7 +43,7 @@ export const Tooltiptext = styled.span`
   margin-left: -60px;
   opacity: 0;
   transition: opacity 0.3s;
-`
+`;
 
 export const TitleContainer = styled.div`
   padding: 10px;
@@ -51,25 +51,24 @@ export const TitleContainer = styled.div`
   flex-direction: column;
   gap: 10px;
   font-weight: 600;
-  color: rgba(81,81,81,255) !important;
+  color: rgba(81, 81, 81, 255) !important;
 
   display: flex;
   justify-content: start;
 
   &:hover ${Tooltiptext} {
-  visibility: visible;
-  opacity: 1;
-}
-`
-
+    visibility: visible;
+    opacity: 1;
+  }
+`;
 
 export const Title = styled.div`
   text-align: center;
   text-overflow: ellipsis;
-  width: 100% ;
+  width: 100%;
   overflow: hidden !important;
   white-space: nowrap;
-`
+`;
 export const Desc = styled.div`
   display: -webkit-box;
   max-width: 100%;
@@ -77,6 +76,6 @@ export const Desc = styled.div`
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
-  color: rgba(190,190,190,255);
+  color: rgba(190, 190, 190, 255);
   font-size: 13px;
-`
+`;

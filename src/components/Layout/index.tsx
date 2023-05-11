@@ -9,7 +9,7 @@ import {
   NavLink,
   NavList,
   Empty,
-} from "./styled";
+} from './styled';
 
 interface LayoutCustomProps {
   children: ReactNode;
@@ -19,7 +19,7 @@ const LayoutCustom = (props: LayoutCustomProps) => {
   const { children } = props;
 
   return (
-    <div style={{ minHeight: "100vh" }} className="__layout">
+    <div style={{ minHeight: '100vh' }} className="__layout">
       <Header>
         <HeaderContent>
           <Logo href="/">
@@ -57,7 +57,7 @@ const LayoutCustom = (props: LayoutCustomProps) => {
               </NavItem>
             </NavList>
           </Nav>
-          <Empty/>
+          <Empty />
         </HeaderContent>
       </Header>
       <Content>{children}</Content>

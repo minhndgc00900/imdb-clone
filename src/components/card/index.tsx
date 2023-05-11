@@ -1,5 +1,5 @@
-import { useNavigate } from "react-router";
-import { Movie } from "../../pages/movies";
+import { useNavigate } from 'react-router';
+import { Movie } from '../../pages/movies';
 import {
   CardItem,
   Desc,
@@ -7,7 +7,7 @@ import {
   Title,
   TitleContainer,
   Tooltiptext,
-} from "./styled";
+} from './styled';
 
 interface ICard {
   movie: Movie;

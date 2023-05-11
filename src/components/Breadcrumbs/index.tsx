@@ -1,24 +1,23 @@
-import { useLocation } from "react-router";
-import { hyphenToUpper } from "../../shared/utils";
-import { Arrow, BreadCrumb } from "./styled";
+import { useLocation } from 'react-router';
+import { hyphenToUpper } from '../../shared/utils';
+import { Arrow, BreadCrumb } from './styled';
 
-interface BreadcrumbsProps{
+interface BreadcrumbsProps {
   title: string;
 }
 
 const Breadcrumbs = (props: BreadcrumbsProps) => {
   const { title = '' } = props;
   const { pathname } = useLocation();
-  const pathList = pathname.split("/").filter((it: string) => it !== "");
+  const pathList = pathname.split('/').filter((it: string) => it !== '');
   console.log(22, props.title);
-  
 
   return (
     <nav>
       {pathList.map((path: string, index: number) => {
         let pathN = path;
 
-        if(title && index === pathList.length -1){
+        if (title && index === pathList.length - 1) {
           pathN = title;
         }
 

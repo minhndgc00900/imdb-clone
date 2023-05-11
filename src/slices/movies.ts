@@ -1,10 +1,10 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import MoviesService from "../shared/services/MoviesService";
-import { Movies, Movie } from "../shared/interfaces/common";
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import MoviesService from '../shared/services/MoviesService';
+import { Movies, Movie } from '../shared/interfaces/common';
 
 export type MoviesState = {
-  movies: Movies[],
-  movieDetail: Movie | null
+  movies: Movies[];
+  movieDetail: Movie | null;
 };
 
 interface requestData {
@@ -13,37 +13,37 @@ interface requestData {
 
 const initialState: MoviesState = {
   movies: [],
-  movieDetail: null
+  movieDetail: null,
 };
 
 export const retrieveMovies = createAsyncThunk(
-  "movies/retrieve",
+  'movies/retrieve',
   async ({ offset }: requestData) => {
     const res = await MoviesService.getAll(offset);
     return res.movies;
-  },
+  }
 );
 
 export const retrieveMovieDetail = createAsyncThunk(
-  "movieDetail/retrieve",
+  'movieDetail/retrieve',
   async (id: string) => {
     const res = await MoviesService.getMovie(id);
     return res.movie;
-  },
+  }
 );
 
 const MovieSlice = createSlice({
-  name: "Movie",
+  name: 'Movie',
   initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(retrieveMovies.fulfilled, (state, action) => {
       state.movies.push(...action.payload);
     }),
-    builder.addCase(retrieveMovieDetail.fulfilled, (state, action) => {
-      state.movieDetail = {...action.payload};
-    })
-  }
+      builder.addCase(retrieveMovieDetail.fulfilled, (state, action) => {
+        state.movieDetail = { ...action.payload };
+      });
+  },
 });
 
 const { reducer } = MovieSlice;

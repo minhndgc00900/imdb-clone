@@ -1,34 +1,33 @@
-import { Link } from "react-router-dom";
-import styled from "styled-components"
-
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 
 export const Header = styled.header`
   background-color: rgb(255, 255, 255);
   padding: 20px 0;
-  display:flex;
+  display: flex;
   position: fixed;
   width: 100%;
-  @import url("https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap");
-  font-family: "Roboto", sans-serif;
+  @import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap');
+  font-family: 'Roboto', sans-serif;
   font-weight: 600;
-  color: rgba(121,121,121,255);
+  color: rgba(121, 121, 121, 255);
   border-bottom: solid 1px #e7e8ea;
   margin: auto;
 
   @media only screen and (min-width: 1366px) {
     padding: 20px 0;
-}
+  }
 `;
 
 export const HeaderContent = styled.div`
-  display:flex;
+  display: flex;
   margin: auto;
   width: 100%;
   padding: 0 20px;
 
   @media only screen and (min-width: 1366px) {
     width: 80rem;
-}
+  }
 `;
 
 export const Logo = styled.a`
@@ -38,7 +37,7 @@ export const Logo = styled.a`
 
 export const Empty = styled.div`
   width: 20%;
-`
+`;
 
 export const Nav = styled.nav`
   flex: 1;
@@ -61,7 +60,7 @@ export const NavItem = styled.li`
 export const NavLink = styled(Link)`
   display: block;
   padding: 10px;
-  color: rgba(121,121,121,255);
+  color: rgba(121, 121, 121, 255);
 
   text-decoration: none;
 
@@ -74,11 +73,11 @@ export const NavLink = styled(Link)`
 export const Content = styled.div`
   padding: 1rem;
   padding-top: 7rem;
-  @import url("https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap");
-  font-family: "Roboto", sans-serif !important;
+  @import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap');
+  font-family: 'Roboto', sans-serif !important;
   margin: auto;
 
   @media only screen and (min-width: 1366px) {
     width: 80rem;
-}
-`
+  }
+`;

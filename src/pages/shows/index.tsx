@@ -1,23 +1,25 @@
-import { useCallback, useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import InfiniteScroll from "react-infinite-scroll-component";
-import Card from "../../components/card";
-import { AppDispatch, RootState } from "../../store";
-import { ShowsState, retrieveShows } from "../../slices/shows";
-import { List, Loading } from "./styled";
+import { useCallback, useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import InfiniteScroll from 'react-infinite-scroll-component';
+import Card from '../../components/card';
+import { AppDispatch, RootState } from '../../store';
+import { ShowsState, retrieveShows } from '../../slices/shows';
+import { List, Loading } from './styled';
 
 export interface Show {
   image: string;
   title: string;
   crew: string;
   year: string;
-  id: string
+  id: string;
 }
 
 function ShowPage() {
   const dispatch = useDispatch<AppDispatch>();
   const [page, setPage] = useState<number>(0);
-  const { shows = [] } = useSelector<RootState, ShowsState>((state) => state?.shows);
+  const { shows = [] } = useSelector<RootState, ShowsState>(
+    (state) => state?.shows
+  );
 
   const initFetch = useCallback(
     (page: number) => {

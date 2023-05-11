@@ -25,7 +25,7 @@ axiosInstance.interceptors.request.use(
   },
   (error: AxiosError) => {
     return Promise.reject(error);
-  },
+  }
 );
 axiosInstance.interceptors.response.use(
   (response) => {
@@ -43,7 +43,7 @@ export async function makeApiRequest<T>(
   method: ApiMethods,
   path: string,
   body: object,
-  config: object = {},
+  config: object = {}
 ) {
   let res = null;
   switch (method) {
@@ -68,4 +68,4 @@ export async function makeApiRequest<T>(
       }
       throw error.response.data;
     });
-  };
+}

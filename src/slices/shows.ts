@@ -1,9 +1,9 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import MoviesService from "../shared/services/MoviesService";
-import { Movies } from "../shared/interfaces/common";
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import MoviesService from '../shared/services/MoviesService';
+import { Movies } from '../shared/interfaces/common';
 
 export type ShowsState = {
-  shows: Movies[]
+  shows: Movies[];
 };
 
 interface requestData {
@@ -15,21 +15,21 @@ const initialState: ShowsState = {
 };
 
 export const retrieveShows = createAsyncThunk(
-  "shows/retrieve",
+  'shows/retrieve',
   async ({ offset }: requestData) => {
-    const res = await MoviesService.getAllShow(offset);    
+    const res = await MoviesService.getAllShow(offset);
     return res.movies;
-  },
+  }
 );
 
 const ShowSlice = createSlice({
-  name: "Show",
+  name: 'Show',
   initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(retrieveShows.fulfilled, (state, action) => {
       state.shows.push(...action.payload);
-    })
+    });
   },
 });
 

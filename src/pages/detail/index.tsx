@@ -1,6 +1,6 @@
-import { useParams } from "react-router-dom";
-import { useCallback, useEffect } from "react";
-import Breadcrumbs from "../../components/Breadcrumbs";
+import { useParams } from 'react-router-dom';
+import { useCallback, useEffect } from 'react';
+import Breadcrumbs from '../../components/Breadcrumbs';
 import {
   Container,
   Genre,
@@ -11,11 +11,11 @@ import {
   TitleContainer,
   Year,
   Image,
-} from "./styled";
-import { AppDispatch, RootState } from "../../store";
-import { useDispatch, useSelector } from "react-redux";
-import { MoviesState, retrieveMovieDetail } from "../../slices/movies";
-import { toHoursAndMinutes } from "../../shared/utils";
+} from './styled';
+import { AppDispatch, RootState } from '../../store';
+import { useDispatch, useSelector } from 'react-redux';
+import { MoviesState, retrieveMovieDetail } from '../../slices/movies';
+import { toHoursAndMinutes } from '../../shared/utils';
 
 const Details = () => {
   const { id } = useParams();
@@ -26,7 +26,9 @@ const Details = () => {
     }
   }, [dispatch]);
 
-  const { movieDetail } = useSelector<RootState, MoviesState>((state) => state?.movies);
+  const { movieDetail } = useSelector<RootState, MoviesState>(
+    (state) => state?.movies
+  );
 
   useEffect(() => {
     initFetch();
@@ -45,7 +47,7 @@ const Details = () => {
               <MainTitle>{movieDetail.title}</MainTitle>
               <Genre>
                 <GenreList>
-                  {movieDetail.genres && movieDetail.genres.join(",  ")}
+                  {movieDetail.genres && movieDetail.genres.join(',  ')}
                 </GenreList>
                 <Year>
                   <img
