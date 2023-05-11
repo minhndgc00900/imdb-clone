@@ -18,7 +18,7 @@ export const retrieveShows = createAsyncThunk(
   "shows/retrieve",
   async ({ offset }: requestData) => {
     const res = await MoviesService.getAllShow(offset);    
-    return res.shows;
+    return res.movies;
   },
 );
 
