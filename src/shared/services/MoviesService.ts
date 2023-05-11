@@ -2,7 +2,7 @@ import { makeApiRequest } from "../apis/axiosClient";
 import { ApiMethods } from "../enums/api";
 import { Movies } from "../interfaces/common";
 
-const getAll = async (offset: number, limit: number = 28) => {
+const getAll = async (offset: number, limit = 28) => {
     const response = await makeApiRequest<Movies[]>(ApiMethods.get, "movies", {
         offset,
         limit
@@ -17,7 +17,7 @@ const getMovie = async (movieId: string) => {
     return response
 }
 
-const getAllShow = async (offset: number, limit: number = 28) => {
+const getAllShow = async (offset: number, limit = 28) => {
     const response = await makeApiRequest<Movies[]>(ApiMethods.get, "tv_shows", {
         params: {
             offset,

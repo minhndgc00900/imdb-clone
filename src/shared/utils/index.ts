@@ -2,7 +2,7 @@ export const isEmptyPagination = (pagination: object) => {
   return Object.entries(pagination).length === 0;
 };
 
-export const hyphenToUpper = (str: String) => {
+export const hyphenToUpper = (str: string) => {
   const upperWord = str
     .split('-')
     .map(function capitalize(part) {

@@ -1,20 +1,12 @@
-// @ts-nocheck 
-
 import axios, {
   AxiosError,
-  AxiosRequestConfig,
   AxiosResponse,
+  InternalAxiosRequestConfig,
 } from 'axios';
 import { ApiMethods } from '../../shared/enums/api';
 
-interface ApiResponse {
-  data: any;
-  status: number;
-  message: string;
-}
-
 interface ErrorResponse {
-  response: ApiResponse;
+  response: AxiosResponse;
 }
 
 const API_BASE_URL = process.env.REACT_APP_URL;
@@ -28,7 +20,7 @@ const axiosInstance = axios.create({
 });
 
 axiosInstance.interceptors.request.use(
-  (config: AxiosRequestConfig) => {
+  (config: InternalAxiosRequestConfig) => {
     return config;
   },
   (error: AxiosError) => {
@@ -36,11 +28,11 @@ axiosInstance.interceptors.request.use(
   },
 );
 axiosInstance.interceptors.response.use(
-  (response: AxiosResponse<ApiResponse>) => {
+  (response) => {
     // Handle successful responses
     return response.data;
   },
-  (error: AxiosError<ApiResponse>) => {
+  (error) => {
     // Handle error responses
     const errorMessage = error.response?.data.message || 'An error occurred';
     throw new Error(errorMessage);
@@ -64,7 +56,7 @@ export async function makeApiRequest<T>(
   }
 
   return res
-    .then((resp: T) => {
+    .then((resp) => {
       return resp;
     })
     .catch(async (error: ErrorResponse) => {

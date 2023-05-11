@@ -5,9 +5,3 @@ export const queryStringToObject = (str: string, options = {}) =>
     arrayFormat: 'bracket',
     ...options,
   });
-
-export const objectToQueryString = (obj: Object, options = {}) =>
-  queryString.stringify(obj, {
-    arrayFormat: 'bracket',
-    ...options,
-  });

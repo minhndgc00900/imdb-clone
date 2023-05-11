@@ -1,5 +1,3 @@
-// @ts-nocheck 
-
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import MoviesService from "../shared/services/MoviesService";
 import { Movies, Movie } from "../shared/interfaces/common";
@@ -37,14 +35,15 @@ export const retrieveMovieDetail = createAsyncThunk(
 const MovieSlice = createSlice({
   name: "Movie",
   initialState,
-  extraReducers: {
-    [retrieveMovies.fulfilled]: (state, action) => {
+  reducers: {},
+  extraReducers: (builder) => {
+    builder.addCase(retrieveMovies.fulfilled, (state, action) => {
       state.movies.push(...action.payload);
-    },
-    [retrieveMovieDetail.fulfilled]: (state, action) => {      
+    }),
+    builder.addCase(retrieveMovieDetail.fulfilled, (state, action) => {
       state.movieDetail = {...action.payload};
-    },
-  },
+    })
+  }
 });
 
 const { reducer } = MovieSlice;

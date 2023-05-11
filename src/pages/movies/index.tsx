@@ -1,5 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useCallback, useEffect, useState } from "react";
 import { MoviesState, retrieveMovies } from "../../slices/movies";
 import { useDispatch, useSelector } from "react-redux";
 import InfiniteScroll from "react-infinite-scroll-component";
@@ -16,7 +15,6 @@ export interface Movie {
 }
 
 function MoviesPage() {
-  const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
   const [page, setPage] = useState<number>(0);
   const { movies = [] } = useSelector<RootState, MoviesState>((state) => state?.movies);
