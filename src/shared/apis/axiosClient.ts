@@ -20,12 +20,8 @@ const axiosInstance = axios.create({
 });
 
 axiosInstance.interceptors.request.use(
-  (config: InternalAxiosRequestConfig) => {
-    return config;
-  },
-  (error: AxiosError) => {
-    return Promise.reject(error);
-  }
+  (config) => config,
+  (error) => Promise.reject(error)
 );
 axiosInstance.interceptors.response.use(
   (response) => {
@@ -49,14 +45,14 @@ export async function makeApiRequest<T>(
   switch (method) {
     case 'get':
       // in case GET method: body is config
-      res = axiosInstance[method](path, body || config);
+      res = axiosInstance[method](path, body || config) as Promise<T>;
       break;
     default:
-      res = axiosInstance[method](path, body, config);
+      res = axiosInstance[method](path, body, config) as Promise<T>;
   }
 
   return res
-    .then((resp) => resp as T)
+    .then((resp) => resp)
     .catch(async (error: ErrorResponse) => {
       switch (error.response?.status) {
         case 400: // Wrong url or params

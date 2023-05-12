@@ -36,6 +36,8 @@ module.exports = {
     'react-hooks/exhaustive-deps': 'warn',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
+    "@typescript-eslint/no-empty-function": "off",
     'prettier/prettier': 'error',
+    "no-empty-function": "off",
   },
 };
